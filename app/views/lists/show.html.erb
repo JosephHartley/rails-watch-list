@@ -1,18 +1,32 @@
-<h1><%= @list.name %></h1>
-<div class="row">
-  <% @list.movies.each do |movie| %>
-  <div class="col-sm-6">
-    <div class="film-card">
-      <img src="<%= movie.poster_url %>" />
-      <div class="film-card-infos">
-        <div>
-          <h2><%= movie.title %> | <%= movie.rating %> stars</h2>
-        </div>
-        <div><p><%= movie.overview %></p></div>
-
-        <h2></h2>
-      </div>
-    </div>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <a><%= link_to "New bookmark", new_list_bookmark_path(@list), class: "btn btn-flat" %></a>
   </div>
-  <% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <% @list.movies.each do |movie| %>
+    <div class="col-sm-6">
+      <div class="film-card">
+        <img src="<%= movie.poster_url %>" />
+        <div class="film-card-infos">
+          <div>
+            <h2><%= movie.title %> | <%= movie.rating %> ⭐</h2>
+            <p><%= movie.overview %></p>
+          </div>
+        </div>
+        <div class="film-card-infos">
+          <div>
+            <h2><% movie.bookmarks.each do |bookmark| %></h2>
+
+            <h2><%= bookmark.comment %></h2>
+            <% end %>
+          </div>
+          <h2>Delete</h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
