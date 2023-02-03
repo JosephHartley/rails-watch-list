@@ -16,7 +16,7 @@ movies_array.each do |g|
   Movie.create(
     title: g["original_title"],
     overview: g["overview"],
-    poster_url: "https://image.tmdb.org/t/p/original#{g["poster_path"]}",
+    poster_url: "https://image.tmdb.org/t/p/original#{g["backdrop_path"]}",
     rating: g["vote_average"]
     )
 end
