@@ -18,12 +18,11 @@
         </div>
         <div class="film-card-infos">
           <div>
-            <h2><% movie.bookmarks.each do |bookmark| %></h2>
-
-            <h2><%= bookmark.comment %></h2>
-            <% end %>
+            <h2><%= movie.bookmarks.first.comment %></h2>
           </div>
-          <h2>Delete</h2>
+          <div>
+            <h2><%= link_to "Delete", "", class: "ms-3 text-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h2>
+          </div>
           </div>
         </div>
       </div>
